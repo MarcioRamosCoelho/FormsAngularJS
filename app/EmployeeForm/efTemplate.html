@@ -1,0 +1,126 @@
+﻿<!-- 2 -->
+<form role="form" class="form-horizontal" >
+    <!--
+
+     1) First Style and make it resizable and in the way you want
+      Container => adds a margin and center page content
+        form-group => groups a label and input field (use row to keep them in the same row)
+        form-control => placed on input elements.
+        form-horizontal => places labels to the left of controls
+        control-label => groups a label and input field
+        col-sm-3 col-sm-9 => use the 12 column grid
+
+        fieldset is a basic html tag that group field with the legend tag
+
+        TO RIGHT ALIGN THE LABEL but off-set may be the thing you need
+         <style>
+        @media (min-width: 768px) {
+            .form-group.row > .col-form-label {
+                text-align: right;
+            }
+        }
+    </style>
+
+        2) Start two way binding
+        $scope holds the model within the controller
+        to access the $scope use ng-model
+        you do not want to use {{}} and ng-bind because they are one way binding
+
+        3) submitting your data
+          ng-submit placed on the form tag, specify a function
+          ng-click placed on the submit button also does a similar work.
+          use one or another and never both.
+
+          you must tie the call back function via
+          $scope.fn place the callback function on $scope.
+
+           tasks: Route to and from a form; Create a Data Service, Cancel out of a form 
+           insert is diferent from update and pay attention to hidden fields.
+           angular as modal functions.
+
+
+    -->   
+     
+      
+
+            <fieldset>
+                <div class="modal-header">
+                    <legend>Basic Information</legend>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="form-group row">
+                            <label for="fullName" class="col-sm-1 offset-sm-2 col-form-label">Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" id="fullName" name="fullName" class="form-control"
+                                       ng-model="editableEmployee.fullName" />
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <label for="notes" class="col-sm-1 offset-sm-2 col-form-label">Notes</label>
+                            <div class="col-sm-9">
+                                <textarea name="notes" id="notes" class="form-control" rows="5" cols="5"
+                                          ng-model="editableEmployee.notes"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="department" class="col-sm-1 offset-sm-2 col-form-label">Department</label>
+                            <div class="col-sm-9">
+                                <select id="department" name="department" class="form-control" ng-model="editableEmployee.department"
+                                        ng-options="dept for dept in departments"></select>
+                                <!-- departments is the array of the department in the controller.-->
+                            </div>
+                        </div>
+                        <br />
+</fieldset>
+
+            <fieldset>
+                <legend>Perks</legend>
+                <div class="form-group row">
+                    <div class="col-sm-3">&nbsp;</div>
+                    <div class="col-sm-9">
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="perkCar" ng-model="editableEmployee.perkCar" />Company Car</label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="perkStock" ng-model="editableEmployee.perkStock" />Stock</label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="perkSixWeeks" ng-model="editableEmployee.perkSixWeeks" />Six Weeks Vacation</label>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Payroll Type</legend>
+                <div class="form-group row">
+                    <div class="col-sm-3">&nbsp;</div>
+                    <div class="col-sm-9">
+                        <div class="radio">
+                            <label><input type="radio" name="payrollType" value="w2" ng-model="editableEmployee.payrollType" />W-2</label>
+                        </div>
+                        <div class="radio">
+                            <label><input type="radio" name="payrollType" value="ten99" ng-model="editableEmployee.payrollType" />1099</label>
+                        </div>
+                        <div class="radio">
+                            <label><input type="radio" name="payrollType" value="none" ng-model="editableEmployee.payrollType" />none</label>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+    </div>    
+    <div class="modal-footer"></div>       
+     <div class="form-group row">
+                <!--<div class="col-sm-3"></div>-->
+
+                <div class="col-sm-9 offset-3">
+                    <input type="button" class="btn btn-primary " value="Cancel" ng-click="cancelForm()" />
+                    <input type="submit" class="btn btn-primary " value="Submit" ng-click="submitForm()" />
+                </div>
+            </div>
+    </div>    
+</form>

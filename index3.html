@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html ng-app="angularFormsApp">
+<head>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+
+    <script src="scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
+
+    <script src="app/AngularFormsApp.js"></script>
+    <script src="app/EmployeeForm/efController.js"></script>
+    <script src="app/EmployeeForm/efDirective.js"></script>
+    <!--<script src="app/EmployeeForm/efService.js"></script>-->
+    <script src="app/EmployeeForm/HomeController.js"></script>
+    <script src="app/TestController/parisCtrl.js"></script>
+    <script src="app/DataService.js"></script>
+    
+</head>
+<!-- no controller on this page since controller is being handled inside of the router. -->
+<body  class="container" >
+
+    <h1>Main Caller </h1>
+    <form role="form" class="form-horizontal">
+      
+        <a href="#!newEmployeeForm" class="btn btn-primary">Add New Employee</a><label>Call it from a anchor <b>href</b></label>
+        <br /> 
+        <a href="#!paris" ng-click="CallFunction()" class="btn btn-primary">Paris Testing</a><label>Call it from a anchor href ng-click</label>
+        <br />  
+        <a href="#!Home" class="btn btn-primary">Home</a><label>Call it from a anchor <b>href</b></label>
+        <br />
+       
+        <div ng-view></div><br />
+
+</form>
+</body>
+</html>
